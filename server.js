@@ -1,55 +1,45 @@
-const express = require('express');
-const dotenv = require('dotenv');
+const express = require("express");
+const dotenv = require("dotenv");
 
 // Load env vars
-dotenv.config({ path: './config/config.env'});
+dotenv.config({ path: "./config/config.env" });
 
 const app = express();
 
+// Get Requests
+app.get("/api/v1/bootcamps", (req, res) => {
+  res.status(200).json({ success: true, msg: "Show all bootcamps" });
+});
+
+app.get("/api/v1/bootcamps/:id", (req, res) => {
+  res.status(200).json({ success: true, msg: `Get bootcamp ${req.params.id}` });
+});
+
+// Post Requests
+app.post("/api/v1/bootcamps", (req, res) => {
+  res.status(200).json({ success: true, msg: "Create new bootcamp" });
+});
+
+// Put Requests
+app.put("/api/v1/bootcamps/:id", (req, res) => {
+  res
+    .status(200)
+    .json({ success: true, msg: `Display bootcamp ${req.params.id}` });
+});
+
+// Delete Requests
+app.delete("/api/v1/bootcamps/:id", (req, res) => {
+  res
+    .status(200)
+    .json({ success: true, msg: `Delete bootcamp ${req.params.id}` });
+});
+
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+app.listen(
+  PORT,
+  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
+);
 
 // const http = require('http');
 
@@ -96,12 +86,11 @@ app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on 
 //         res.writeHead(status, {
 //             'Content-Type': 'application/json',
 //             'X-Powered-By': 'Node.js'
-//         });        
+//         });
 //         res.end(
 //             JSON.stringify(response)
 //         );
 //     });
-
 
 // });
 
